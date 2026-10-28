@@ -10,11 +10,11 @@ echo ============================================================
 echo.
 
 echo [09] EXTRAIR SELECAO DO DIA
-py 09_extrair_selecao_do_dia.py --delta delta_14102026_EVENTOS.json --txt selecao_do_dia_14102026.txt --out enriquecido_14102026.json --debug selecao_nao_encontrados_14102026.json
+py 09_extrair_selecao_do_dia.py --delta delta_28102026_EVENTOS.json --txt selecao_do_dia_28102026.txt --out enriquecido_28102026.json --debug selecao_nao_encontrados_28102026.json
 
 REM O 09 pode retornar errorlevel por titulo nao encontrado.
 REM So interrompe se o arquivo de saida nao existir.
-if not exist enriquecido_14102026.json goto :erro09
+if not exist enriquecido_28102026.json goto :erro09
 
 echo.
 echo ============================================================
@@ -23,9 +23,9 @@ echo ============================================================
 echo.
 
 echo [10] GERAR INDEX DO DIA
-py 10_gerar_index_dia.py enriquecido_14102026.json --out index_dia_14102026.json
+py 10_gerar_index_dia.py enriquecido_28102026.json --out index_dia_28102026.json
 if errorlevel 1 goto :erro10
-if not exist index_dia_14102026.json goto :erro10arquivo
+if not exist index_dia_28102026.json goto :erro10arquivo
 
 echo.
 echo ============================================================
@@ -37,7 +37,7 @@ echo [11] JUNTAR MASTER + BLOG500
 echo IMPORTANTE: a partir daqui, qualquer erro ficara visivel.
 echo.
 
-py 11_juntar_master_BLOG500.py index_dia_14102026.json
+py 11_juntar_master_BLOG500.py index_dia_28102026.json
 set ERRO11=%ERRORLEVEL%
 
 echo.
@@ -68,7 +68,7 @@ goto :fim
 echo.
 echo ============================================================
 echo ERRO NO PASSO 09
-echo enriquecido_14102026.json NAO FOI GERADO.
+echo enriquecido_28102026.json NAO FOI GERADO.
 echo ============================================================
 goto :erro
 
@@ -84,7 +84,7 @@ goto :erro
 echo.
 echo ============================================================
 echo ERRO NO PASSO 10
-echo index_dia_14102026.json NAO FOI GERADO.
+echo index_dia_28102026.json NAO FOI GERADO.
 echo ============================================================
 goto :erro
 
